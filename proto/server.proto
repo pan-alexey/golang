@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package server;
+
+service ExternalService {
+    rpc GetTestList (GetTestListMessage) returns (TestList) {}
+    rpc GetTest (Empty) returns (Test) {}
+}
+
+message Test {
+    int32 id = 1;
+    string title = 2;
+    optional string body = 3;
+}
+
+message Empty {}
+
+message GetTestListMessage {
+    optional int32 id = 1;
+    optional string text = 2;
+}
+
+message TestList {
+   repeated Test list = 1;
+}
